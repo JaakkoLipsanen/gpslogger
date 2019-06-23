@@ -64,24 +64,9 @@ public class CSVFileLogger implements FileLogger {
             description = "\"" + description.replaceAll("\"", "\"\"") + "\"";
         }
 
-        String outputString = String.format(Locale.US, "%s,%s,%s,%s,%s,%s,%s,%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", dateTimeString,
+        String outputString = String.format(Locale.US, "%s %s\n",
                 loc.getLatitude(),
-                loc.getLongitude(),
-                loc.hasAltitude() ? loc.getAltitude() : "",
-                loc.hasAccuracy() ? loc.getAccuracy() : "",
-                loc.hasBearing() ? loc.getBearing() : "",
-                loc.hasSpeed() ? loc.getSpeed() : "",
-                Maths.getBundledSatelliteCount(loc),
-                loc.getProvider(),
-                (loc.getExtras() != null && !Strings.isNullOrEmpty(loc.getExtras().getString(BundleConstants.HDOP))) ? loc.getExtras().getString(BundleConstants.HDOP) : "",
-                (loc.getExtras() != null && !Strings.isNullOrEmpty(loc.getExtras().getString(BundleConstants.VDOP))) ? loc.getExtras().getString(BundleConstants.VDOP) : "",
-                (loc.getExtras() != null && !Strings.isNullOrEmpty(loc.getExtras().getString(BundleConstants.PDOP))) ? loc.getExtras().getString(BundleConstants.PDOP) : "",
-                (loc.getExtras() != null && !Strings.isNullOrEmpty(loc.getExtras().getString(BundleConstants.GEOIDHEIGHT))) ? loc.getExtras().getString(BundleConstants.GEOIDHEIGHT) : "",
-                (loc.getExtras() != null && !Strings.isNullOrEmpty(loc.getExtras().getString(BundleConstants.AGEOFDGPSDATA))) ? loc.getExtras().getString(BundleConstants.AGEOFDGPSDATA) : "",
-                (loc.getExtras() != null && !Strings.isNullOrEmpty(loc.getExtras().getString(BundleConstants.DGPSID))) ? loc.getExtras().getString(BundleConstants.DGPSID) : "",
-                (loc.getExtras() != null && !Strings.isNullOrEmpty(loc.getExtras().getString(BundleConstants.DETECTED_ACTIVITY))) ? loc.getExtras().getString(BundleConstants.DETECTED_ACTIVITY) : "",
-                (batteryLevel != null) ? batteryLevel : "",
-                description
+                loc.getLongitude()
         );
         return outputString;
     }
@@ -93,7 +78,8 @@ public class CSVFileLogger implements FileLogger {
 
             FileOutputStream writer = new FileOutputStream(file, true);
             BufferedOutputStream output = new BufferedOutputStream(writer);
-            String header = "time,lat,lon,elevation,accuracy,bearing,speed,satellites,provider,hdop,vdop,pdop,geoidheight,ageofdgpsdata,dgpsid,activity,battery,annotation\n";
+        //  String header = "time,lat,lon,elevation,accuracy,bearing,speed,satellites,provider,hdop,vdop,pdop,geoidheight,ageofdgpsdata,dgpsid,activity,battery,annotation\n";
+            String header = ""; // no header in Flai file format
             output.write(header.getBytes());
             output.flush();
             output.close();

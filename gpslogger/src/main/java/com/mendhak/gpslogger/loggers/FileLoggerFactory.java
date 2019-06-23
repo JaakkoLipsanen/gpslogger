@@ -73,7 +73,7 @@ public class FileLoggerFactory {
         }
 
         if (preferenceHelper.shouldLogToCSV()) {
-            File file = new File(gpxFolder.getPath(), Strings.getFormattedFileName() + ".csv");
+            File file = new File(gpxFolder.getPath(), Strings.getFormattedFileName() + ".txt"); // Flai file format uses .txt, not .csv
             loggers.add(new CSVFileLogger(file, batteryLevel));
         }
 

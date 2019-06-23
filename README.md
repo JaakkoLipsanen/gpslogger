@@ -1,3 +1,10 @@
+## CHANGES COMPARED TO UPSTREAM VERSION
+
+- CSV logger DOESNT log CSV anymore, instead it logs space separated lat/lng, one coordinate per row (as per the custom file format I use on my website)
+- App is renamed to "Flai GPSLogger"
+- Custom file format files are ".txt" instead of ".csv"
+- No CSV headers in custom file format
+
 GPSLogger [![Build Status](https://travis-ci.org/mendhak/gpslogger.svg?branch=master)](https://travis-ci.org/mendhak/gpslogger) [![pgp](assets/pgp.png)](https://keybase.io/mendhak)
 =========
 
